@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import {createContext} from 'react';
+import User from './components/User.jsx'
 
-function App() {
+export const UserContext = createContext(); //ya esta desestructurada desde la importacion
+//export const UserContext = React.CreateContext(); // equivalente a la expresion de arriba 
+
+const App = () => {
+
+    const user = {
+        nombre: 'Antonela',
+        edad:34,
+        sector: 'Codo a Codo',
+        cargo: 'Estudiante'
+    }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <UserContext.Provider value={user}>
+      <User/>
+    </UserContext.Provider>
+
+  )
 }
 
-export default App;
+export default App
